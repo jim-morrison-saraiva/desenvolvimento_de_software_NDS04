@@ -351,3 +351,59 @@ class Address(ModelBase):
 
     def __str__(self):
         return f'{self.street} - {self.neighborhood} - {self.house_number} - {self.complement} - {self.cep}'
+
+class Employer(ModelBase):
+    name = models.CharField(
+        db_column='tx_name',
+        max_length=120,
+        null=False,
+        blank=False,
+    )
+    email = models.EmailField(
+        db_column='tx_email',
+        null=False,
+        blank=False,
+    )
+    cpf = models.CharField(
+        db_column='tx_cpf',
+        max_length=11,
+        null=False,
+        blank=False,
+    )
+    salary = models.DecimalField(
+        db_column='nb_salary',
+        max_digits=5,
+        decimal_places=2,
+        null=False,
+        blank=False,
+    )
+    class Meta:
+        db_table = 'employer'
+        verbose_name = 'Employer'
+        verbose_name_plural = 'Employers'
+
+        def __str__(self):
+            return f'{self.name} + {self.salary}'
+
+class Position(ModelBase):
+    position = models.CharField(
+        db_column='tx_position',
+        max_length=120,
+        null=False,
+        blank=False,
+    )
+    employer = models.ForeignKey(
+        Employer,
+        db_column='id_employer',
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
+
+    class Meta:
+        db_table = 'position'
+        verbose_name = 'Position'
+        verbose_name_plural = 'Positions'
+
+        def __str__(self):
+            return f'{self.position}'
