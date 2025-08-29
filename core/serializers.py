@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Customer, Phone, Vehicle, CarModel, Brand, Service, Payment, Method, Address
+from core.models import Customer, Phone, Vehicle, CarModel, Brand, Service, Payment, Method, Address, Employer, Position
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -47,4 +47,14 @@ class MethodSerializer(serializers.ModelSerializer):
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
+        fields = '__all__'
+
+class EmployerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employer
+        fields = '__all__'
+
+class PositionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Position
         fields = '__all__'

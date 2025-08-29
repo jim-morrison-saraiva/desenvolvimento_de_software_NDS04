@@ -51,10 +51,26 @@ class MethodViewSet(viewsets.ModelViewSet):
     queryset = models.Method.objects.all()
     serializer_class = serializers.MethodSerializer
     permission_classes = [IsAuthenticated]
+    filterset_class = filters.MethodFilter
 
 
 class AddressViewSet(viewsets.ModelViewSet):
     queryset = models.Address.objects.all()
     serializer_class = serializers.AddressSerializer
     permission_classes = [IsAuthenticated]
+    filterset_class = filters.AddressFilter
+
+
+class EmployerViewSet(viewsets.ModelViewSet):
+    queryset = models.Employer.objects.all()
+    serializer_class = serializers.EmployerSerializer
+    permission_classes = [IsAuthenticated]
+    filterset_class = filters.EmployerFilter
+
+
+class PositionViewSet(viewsets.ModelViewSet):
+    queryset = models.Position.objects.all()
+    serializer_class = serializers.PositionSerializer
+    permission_classes = [IsAuthenticated]
+    filterset_class = filters.PositionFilter
 
