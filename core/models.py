@@ -1,7 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-
 class ModelBase(models.Model):
     id = models.BigAutoField(
         db_column='id',
@@ -56,7 +55,6 @@ class Customer(ModelBase):
         verbose_name = 'Customer'
         verbose_name_plural = 'Customers'
 
-
 class Phone(ModelBase):
     number = models.CharField(
         db_column='tx_number',
@@ -80,7 +78,6 @@ class Phone(ModelBase):
         db_table = 'phone'
         verbose_name = 'Phone'
         verbose_name_plural = 'Phone'
-
 
 class Vehicle(ModelBase):
     class VehicleType(models.IntegerChoices):
@@ -141,7 +138,6 @@ class Vehicle(ModelBase):
         verbose_name = 'Vehicle'
         verbose_name_plural = 'Vehicles'
 
-
 class CarModel(ModelBase):
     name = models.CharField(
         db_column='tx_name',
@@ -166,7 +162,6 @@ class CarModel(ModelBase):
         verbose_name = 'Model'
         verbose_name_plural = 'Models'
 
-
 class Brand(ModelBase):
     name = models.CharField(
         db_column='tx_name',
@@ -182,7 +177,6 @@ class Brand(ModelBase):
         db_table = 'brand'
         verbose_name = 'Brand'
         verbose_name_plural = 'Brands'
-
 
 class Service(ModelBase):
     class Status(models.IntegerChoices):
@@ -242,7 +236,6 @@ class Service(ModelBase):
     def __str__(self):
         return f'{self.id}'
 
-
 class Payment(ModelBase):
     discount = models.DecimalField(
         db_column='nb_discount',
@@ -283,7 +276,6 @@ class Payment(ModelBase):
     def __str__(self):
         return f'{self.id} + {self.total}'
 
-
 class Method(ModelBase):
     payment_type = models.CharField(
         db_column='tx_payment_type',
@@ -299,7 +291,6 @@ class Method(ModelBase):
 
     def __str__(self):
         return f'{self.id} + {self.payment_type}'
-
 
 class Address(ModelBase):
     cep = models.CharField(

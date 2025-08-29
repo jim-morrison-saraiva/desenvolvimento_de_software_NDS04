@@ -100,3 +100,21 @@ class AddressFilter(filters.FilterSet):
     class Meta:
         model = models.Address
         fields = ['cep', 'street', 'house_number', 'complement', 'reference', 'city']
+
+class EmployerFilter(filters.FilterSet):
+    name = filters.CharFilter(lookup_expr=LIKE)
+    email = filters.CharFilter(lookup_expr=ICONTAINS)
+    cpf = filters.CharFilter(lookup_expr=EQUALS)
+    position = filters.CharFilter(field_name='position__position', lookup_expr=LIKE)
+
+    class Meta:
+        model = models.Employer
+        fields = ['name', 'email', 'cpf', 'position']
+
+class PositionFilter(filters.FilterSet):
+    position = filters.CharFilter(lookup_expr=LIKE)
+
+
+    class Meta:
+        model = models.Position
+        fields = ['position']
